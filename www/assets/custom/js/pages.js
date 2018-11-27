@@ -1,88 +1,34 @@
 'use strict';
 
-
 /*
 |------------------------------------------------------------------------------
-| Cart
+| User Profile
 |------------------------------------------------------------------------------
 */
 
-myApp.onPageInit('cart', function(page) {
+myApp.onPageInit('user-profile', function(page) {
 
-	updateAmount();
+	/* Portfolio Images Browser */
+	$$('body').on('click', '.page[data-page=user-profile] #tab-portfolio .image-gallery .image-wrapper img', function() {
+		var photos = [];
 
-	/* Change Quantity */
-	$$('.page[data-page=cart] [data-action=change-quantity]').on('click', function(e) {
-		e.preventDefault();
-		var el = $(this).closest('.swipeout');
-		var el_product_quantity = el.find('.product-quantity');
-		var product_unit_price = el.find('.item-after').data('unit-price');
-		var el_product_amount = el.find('.product-amount'); 
-		myApp.prompt('Quantity', 
-      function(value) {
-        if(value > 0) {
-					el_product_quantity.text(value);
-					el_product_amount.text(product_unit_price * value);
-				}
-				updateAmount();
-      }
-    );
-		myApp.swipeoutClose(el);
+		$('.page[data-page=user-profile] #tab-portfolio .image-gallery .image-wrapper img').each(function() {
+			photos.push({
+				url: $(this).attr('src'),
+				caption: $(this).attr('alt')
+			});
+		});
+
+		var myPhotoBrowser = myApp.photoBrowser({
+    	photos: photos,
+			exposition: false,
+			lazyLoading: true,
+			lazyLoadingInPrevNext: true,
+			lazyLoadingOnTransitionStart: true,
+			loop: true
+		});
+		myPhotoBrowser.open();
 	});
-
-	/* Remove Product */
-	$$('.page[data-page=cart] [data-action=remove-product]').on('click', function(e) {
-		e.preventDefault();
-		var el = $(this).closest('.swipeout');
-		myApp.confirm('Do you want to remove this product from cart?', 
-			function() {
-        myApp.swipeoutDelete(el, function(){
-					myApp.addNotification({
-						message: 'Removed from cart successfully.',
-						hold: 1500,
-						button: {
-							text: ''
-						},
-						onClose: function() {
-							updateAmount();
-						}
-					});
-				});
-      },
-			function() {
-				myApp.swipeoutClose(el);
-			}
-    );
-	});
-
-	function updateAmount() {
-		var product_count = 0;
-		var subtotal = 0;
-		var discount = 0;
-		var shipping_charges = 0;
-		var grand_total = 0;
-
-		product_count = $('.page[data-page=cart] .products-list li').length;
-
-		$$('.page[data-page=cart] .products-list li').each(function() {
-			var unit_price = $$(this).find('[data-unit-price]').data('unit-price');
-			var quantity = $$(this).find('.product-quantity').text();
-			subtotal += parseInt(unit_price * quantity);
-			$$(this).find('.product-amount').text(parseInt(unit_price * quantity));
-		})
-
-		discount = (subtotal * $$('.page[data-page=cart] [data-discount-percent]').data('discount-percent')) / 100;
-
-		shipping_charges = parseInt($$('.page[data-page=cart] .shipping-charges').text());
-
-		grand_total = parseInt(subtotal - discount + shipping_charges);
-
-		$$('.page[data-page=cart] .product-count').text(product_count);
-		$$('.page[data-page=cart] .subtotal').text(subtotal);
-		$$('.page[data-page=cart] .discount').text(discount);
-		$$('.page[data-page=cart] .payable-amount').text(grand_total);
-		$$('.page[data-page=cart] .toolbar-bottom .grand-total').text('₹' + grand_total);
-	}
 
 });
 
@@ -202,96 +148,54 @@ myApp.onPageInit('feedback', function(page) {
 myApp.onPageInit('home', function(page) {
 	
 	
-	// MAP		
-	$(function() {
-		var map = new GMaps({
-			el: '#map',
-      lat: -6.1828052,
-      lng: 106.8308969,
-      zoom: 14, 
-      zoomControl: true,
-      zoomControlOpt: {
-				style: 'SMALL',
-        position: 'TOP_LEFT'
-      },
-      panControl: true,
-      streetViewControl: false,
-      mapTypeControl: false,
-      overviewMapControl: false
-    });
-
-		map.addMarker({
-			lat: -6.1828052,
-			lng: 106.8308969,
-			icon: {
-				path: 'M 0,0 C -2,-20 -10,-22 -10,-30 A 10,10 0 1,1 10,-30 C 10,-22 2,-20 0,0 z M -2,-30 a 2,2 0 1,1 4,0 2,2 0 1,1 -4,0',
-        fillColor: '#DBBD31',
-        fillOpacity: 1,
-        strokeColor: '#000000',
-        strokeWeight: 2,
-        scale: 1
-   		},
-			animation: google.maps.Animation.DROP
-		});
-
-		map.addStyle({
-			styledMapName: 'Light Monochrome',
-      styles: snazzyMaps.lightMonochrome,
-      mapTypeId: 'lightMonochrome'  
-		});
-
-    map.setStyle('lightMonochrome');
-	});
-
-	/* Hero Slider */
 	
 	var html = '';
 	var slider = '';
-	$.get(`${URL}/x-mob-slider.php`, 
-		function(data, status){
-			//myApp.hideIndicator();
-			var slidex = '';		
-			if(data != null){
+	// $.get(`${URL}/x-mob-slider.php`, 
+	// 	function(data, status){
+	// 		//myApp.hideIndicator();
+	// 		var slidex = '';		
+	// 		if(data != null){
 	
-				data.map((slide) => {	
-					slidex +='<div class="swiper-slide" style="background-image: url('+slide.IMG_SLIDE+');">'+
-								'<div class="slide-content">'+
-								'</div>'+
-							'</div>';					
+	// 			data.map((slide) => {	
+	// 				slidex +='<div class="swiper-slide" style="background-image: url('+slide.IMG_SLIDE+');">'+
+	// 							'<div class="slide-content">'+
+	// 							'</div>'+
+	// 						'</div>';					
 					
-				})
+	// 			})
 
-				slider = '<div class="swiper-container">'+
-							'<div class="swiper-wrapper" >'+
+	// 			slider = '<div class="swiper-container">'+
+	// 						'<div class="swiper-wrapper" >'+
 							
-								slidex +
+	// 							slidex +
 								
-							'</div>'+
-							'<div class="swiper-pagination"></div>'+
-						'</div>';
+	// 						'</div>'+
+	// 						'<div class="swiper-pagination"></div>'+
+	// 					'</div>';
 			
-				$$(".swiper-wrapper").css("height", "");
-				$$(".swiper-wrapper img").css("display", "none");
-				$$("#temp_preview").css("display", "none");
+	// 			$$(".swiper-wrapper").css("height", "");
+	// 			$$(".swiper-wrapper img").css("display", "none");
+	// 			$$("#temp_preview").css("display", "none");
 
-				document.getElementById("inner_slider").innerHTML = '';
-				document.getElementById("inner_slider").innerHTML = slider;
+	// 			// document.getElementById("inner_slider").innerHTML = '';
+	// 			// document.getElementById("inner_slider").innerHTML = slider;
 
-				// var mySwiper = myApp.swiper('.swiper-container', {
-				// 	pagination:'.swiper-pagination',
-				// 	speed: 400,
-				// });
-				myApp.swiper('.page[data-page=home] .slider-hero .swiper-container', {
-					autoplay: 10000,
-					loop: true,
-					pagination: '.swiper-pagination',
-					paginationClickable: true
-				});
-				//console.log(slidex);
+	// 			// var mySwiper = myApp.swiper('.swiper-container', {
+	// 			// 	pagination:'.swiper-pagination',
+	// 			// 	speed: 400,
+	// 			// });
+	// 			myApp.swiper('.page[data-page=home] .slider-hero .swiper-container', {
+	// 				autoplay: 10000,
+	// 				loop: true,
+	// 				pagination: '.swiper-pagination',
+	// 				paginationClickable: true
+	// 			});
+	// 			//console.log(slidex);
 		
-			}
-		}
-	);
+	// 		}
+	// 	}
+	// );
 
 	/* menu home */
 	var largest = 0
