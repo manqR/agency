@@ -199,70 +199,16 @@
 
 /*
 |------------------------------------------------------------------------------
-| Riwayat
+| History
 |------------------------------------------------------------------------------
 */
 
-.page[data-page=riwayat] .page-content {
-	height: calc(100% - 48px);
-  padding-top: 56px !important;
+.page[data-page=history] a {
+	color: #484848;
 }
-.page[data-page=riwayat] .price-summary .item-title {
-	font-size: 14px;
-}
+.page[data-page=history] .navbar, .toolbar, .subnavbar, .toolbar-inner {
+	background-color:#2b9dad;
 
-.page[data-page=riwayat] img {
-	height: 90vw;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-.page[data-page=riwayat] .products-list .item-title {
-	-webkit-box-orient: vertical;
-	display: -webkit-box;
-	font-size: 13px;
-	-webkit-line-clamp: 2;
-	line-height: 17px;
-  margin-bottom: 2px;
-	white-space: normal;
-}
-
-.page[data-page=riwayat] .products-list .item-after {
-	font-weight: bold;
-}
-
-.page[data-page=riwayat] .products-list .item-subtitle {
-	-webkit-box-orient: vertical;
-	display: -webkit-box;
-	font-size: 11px;
-	-webkit-line-clamp: 2;
-	white-space: normal;
-}
-
-.page[data-page=riwayat] .products-list .item-text {
-	margin-top: 4px;
-}
-
-.page[data-page=riwayat] .price-summary .item-title {
-	font-size: 14px;
-}
-
-.page[data-page=riwayat] .toolbar-bottom .grand-total {
-	background-color: #F1F2F1;
-	color: rgba(0, 0, 0, 0.87);
-	font-size: 16px;
-	font-weight: bold;
-	height: 48px;
-	line-height: 48px;
-	text-align: center;
-	width: 50%;
-}
-
-.page[data-page=riwayat] .toolbar-bottom .button {
-	border-radius: 0;
-	height: 48px;
-	line-height: 48px;
-	width: 50%;
 }
 
 /*
