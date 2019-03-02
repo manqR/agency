@@ -228,24 +228,36 @@ myApp.onPageInit('home', function(page) {
 |------------------------------------------------------------------------------
 */
 
-// myApp.onPageInit('splash-screen', function(page) {
-	
-		setTimeout(function() {			
+myApp.onPageInit('splash-screen', function(page) {
+
+		let data = localStorage.getItem('loginData');            
+		if(data){
+			mainView.router.load({
+				url: 'home.html'
+			});
+
+			// console.log(data);
+		}else{
 			mainView.router.load({
 				url: 'walkthrough.html'
 			});
-		}, 2000);
-		/* 1 second after page is loaded, show preloader. */		
-		setTimeout(function() {
-			$$('.page[data-page=splash-screen] .splash-preloader').css('opacity', 1);
-		}, 1000);
+		}
+		// setTimeout(function() {			
+		// 	mainView.router.load({
+		// 		url: 'walkthrough.html'
+		// 	});
+		// }, 2000);
+		// /* 1 second after page is loaded, show preloader. */		
+		// setTimeout(function() {
+		// 	$$('.page[data-page=splash-screen] .splash-preloader').css('opacity', 1);
+		// }, 1000);
 
 	
 
 
 	
 
-// });
+});
 /*
 |------------------------------------------------------------------------------
 | Walkthrough

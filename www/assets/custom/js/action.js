@@ -19,9 +19,19 @@
 */
 
 
-// const URL = 'http://uat-www.mnclife.com/mvoucher/fetch'; 
-// const PDF_URL2 = 'https://uat-www.mnclife.com/evoucher'; 
-// const PDF_URL = 'https://uat-www.mnclife.com/mvoucher/file';
-// const CLOSE_URL = 'http://uat-www.mnclife.com/evoucher/index.php?p=doku-payment-redirect';
-// const CLOSE_URL2 = 'http://uat-www.mnclife.com/mvoucher/done.php';
-// const DOKU = 'http://staging.doku.com/Suite/Receive';
+const URL = 'http://localhost/agencyjakartav2/index.php'; 
+const PDF_URL2 = 'https://uat-www.mnclife.com/evoucher'; 
+const PDF_URL = 'https://uat-www.mnclife.com/mvoucher/file';
+const CLOSE_URL = 'http://uat-www.mnclife.com/evoucher/index.php?p=doku-payment-redirect';
+const CLOSE_URL2 = 'http://uat-www.mnclife.com/mvoucher/done.php';
+const DOKU = 'http://staging.doku.com/Suite/Receive';
+
+
+
+/*
+|------------------------------------------------------------------------------
+| KEY
+|------------------------------------------------------------------------------
+*/
+
+const KEY = 'xX-!)(>??$%YO3H!';

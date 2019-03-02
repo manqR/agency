@@ -727,6 +727,119 @@
 }
 
 
+
+
+/*
+|------------------------------------------------------------------------------
+| Log In
+|------------------------------------------------------------------------------
+*/
+
+.page[data-page=login] .page-content {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	overflow-y: auto;
+}
+
+.page[data-page=login] .page-content > :first-child {
+	margin-top: auto !important;
+	padding-top: 32px;
+}
+
+.page[data-page=login] .logo {
+	display: block;
+	margin: 0 auto;	
+}
+.page[data-page=login] .button.button-big {
+	width: 100%;
+}
+
+.page[data-page=login] input[name=password] {
+	padding-right: 42px;
+}
+
+.page[data-page=login] .item-after.show-hide-password {
+	display: inline-block;
+	position: absolute;
+	right: 16px;
+	top: 12px;
+}
+
+.page[data-page=login] a[href='forgot-password.html'] {
+	display: inline-block;
+ 	float: right;
+  	margin: 0 16px 32px;
+}
+
+
+
+
+/*
+|------------------------------------------------------------------------------
+| Sign Up
+|------------------------------------------------------------------------------
+*/
+
+.page[data-page=signup] .page-content {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	overflow-y: auto;
+	text-align: center;
+}
+.page[data-page=signup] input[name=password] {
+	padding-right: 42px;
+}
+
+.page[data-page=signup] .item-after.show-hide-password {
+	display: inline-block;
+	position: absolute;
+	right: 16px;
+	top: 12px;
+}
+
+.page[data-page=signup] .page-content > :first-child {
+	margin-top: auto !important;
+	padding-top: 32px;
+}
+/* 
+.page[data-page=signup] .logo {
+	height: 144px;
+	width: auto;
+} */
+
+.popup-signup-email .container {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	overflow-y: auto;
+}
+
+.popup-signup-email .container > :first-child {
+	margin-top: auto !important;
+	padding-top: 32px;
+}
+
+.popup-signup-email .logo {
+	display: block;
+	height: 144px;
+	margin: 0 auto;
+	width: auto;
+}
+
+.popup-signup-email input[name=password] {
+	padding-right: 42px;
+}
+
+.popup-signup-email .item-after.show-hide-password {
+	display: inline-block;
+	position: absolute;
+	right: 16px;
+	top: 12px;
+}
+
+
 /*
 |------------------------------------------------------------------------------
 | status-voucher

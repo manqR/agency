@@ -1,5 +1,81 @@
 'use strict';
 
+
+/*
+|------------------------------------------------------------------------------
+| Registrasi
+|------------------------------------------------------------------------------
+*/
+
+myApp.onPageInit('signup', function(page) {
+
+	$('.page[data-page=signup] form[name=signup]').validate({
+		rules: {
+			username: {
+				required: true
+     	 	},
+			email: {
+				required: true
+     	 	},
+			password: {
+				required: true
+     	 	}
+		},
+    messages: {
+			username: {
+				required: 'Mohon Masukan username dengan benar'
+      		},
+			email: {
+				required: 'Mohon Masukan Email dengan benar'
+      		},
+			password: {
+				required: 'Mohon Masukan Password dengan benar'
+      		}
+		},
+		onkeyup: false,
+    errorElement : 'div',
+		errorPlacement: function(error, element) {
+			error.appendTo(element.parent().siblings('.input-error'));
+		},
+		submitHandler: function(form) {
+
+			var username = $("input[name=username]").val();
+			var email = $("input[name=email]").val();
+			var password = $("input[name=password]").val();
+
+			$.post(`${URL}?r=signup/create`,{
+				username: username,			
+				email: email,			
+				password: SHA1(password,KEY),			
+			},
+			function(data, status){	
+				if(data){
+					localStorage.setItem("loginData", data);
+					mainView.router.load({
+						url: 'home.html'
+					});
+				}
+			});
+		}
+	});
+})
+
+
+
+
+/*
+|------------------------------------------------------------------------------
+| Edit Profile
+|------------------------------------------------------------------------------
+*/
+
+myApp.onPageInit('edit-profile', function(page) {
+
+		console.log('edit profile');
+		
+})
+
+
 /*
 |------------------------------------------------------------------------------
 | Pembelian Voucher
