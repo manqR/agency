@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "244382947804",
+    "firebase_url": "https://agencyjakarta-9f0cb.firebaseio.com",
+    "project_id": "agencyjakarta-9f0cb",
+    "storage_bucket": "agencyjakarta-9f0cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244382947804:android:13aa90cde70e12fd",
+        "android_client_info": {
+          "package_name": "com.agency.jak.arta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244382947804-70fgoc0n6djuluekbvrgd9canvvv9l7b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZi34eD0hVXYFYmOeNiGWzY7ZizXqxLpw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

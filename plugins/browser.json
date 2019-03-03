@@ -9,6 +9,15 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.agency.jak.arta"
+    },
+    "cordova-plugin-crypt-file": {
+      "PACKAGE_NAME": "com.agency.jak.arta"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.agency.jak.arta"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "com.agency.jak.arta"
     }
   },
   "dependent_plugins": {}

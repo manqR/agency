@@ -19,7 +19,8 @@
 */
 
 
-const URL = 'http://localhost/agencyjakartav2/index.php'; 
+// const URL = 'http://localhost/agencyjakartav2/index.php'; 
+const URL = 'https://cms.agencyjakarta.co.id/index.php'; 
 const PDF_URL2 = 'https://uat-www.mnclife.com/evoucher'; 
 const PDF_URL = 'https://uat-www.mnclife.com/mvoucher/file';
 const CLOSE_URL = 'http://uat-www.mnclife.com/evoucher/index.php?p=doku-payment-redirect';

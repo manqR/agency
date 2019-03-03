@@ -49,7 +49,8 @@ myApp.onPageInit('signup', function(page) {
 				password: SHA1(password,KEY),			
 			},
 			function(data, status){	
-				if(data){
+				if(data.msg == 'success'){
+					// console.log('data ', data.data)
 					localStorage.setItem("loginData", data);
 					mainView.router.load({
 						url: 'home.html'
@@ -58,6 +59,78 @@ myApp.onPageInit('signup', function(page) {
 			});
 		}
 	});
+})
+
+
+
+/*
+|------------------------------------------------------------------------------
+| Login
+|------------------------------------------------------------------------------
+*/
+
+myApp.onPageInit('login', function(page) {
+
+	$('.page[data-page=login] form[name=login]').validate({
+		rules: {		
+			email: {
+				required: true
+     	 	},
+			password: {
+				required: true
+     	 	}
+		},
+    messages: {		
+			email: {
+				required: 'Mohon Masukan Email dengan benar'
+      		},
+			password: {
+				required: 'Mohon Masukan Password dengan benar'
+      		}
+		},
+		onkeyup: false,
+    errorElement : 'div',
+		errorPlacement: function(error, element) {
+			error.appendTo(element.parent().siblings('.input-error'));
+		},
+		submitHandler: function(form) {
+
+			var email = $("input[name=email]").val();
+			var password = $("input[name=password]").val();
+
+			// $.post(`${URL}?r=login/post`,{						
+			// 	email: email,			
+			// 	password: SHA1(password,KEY),			
+			// },
+			// function(data, status){	
+			// 	if(data){
+			// 		localStorage.setItem("loginData", data);
+			// 		mainView.router.load({
+			// 			url: 'home.html'
+			// 		});
+			// 	}
+			// });
+
+
+			$.ajax({
+					url: `${URL}?r=login/post`,
+					type: 'post',
+					data: {
+							email: email,			
+							password: SHA1(password,KEY),			
+					},
+					headers: {
+						'Content-Type': 'application/json',
+						'Accept': 'application/json'
+					},
+					dataType: 'json',
+					success: function (data) {
+							console.info(data);
+					}
+			});
+		}
+	});
+
 })
 
 
