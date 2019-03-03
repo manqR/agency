@@ -46,6 +46,7 @@ myApp.onPageInit('signup', function(page) {
 			$.post(`${URL}?r=signup/create`,{
 				username: username,			
 				email: email,			
+				dvid: device.uuid,
 				password: SHA1(password,KEY),			
 			},
 			function(data, status){	

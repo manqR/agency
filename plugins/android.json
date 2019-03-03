@@ -7,9 +7,6 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.agency.jak.arta"
-    },
     "cordova-plugin-crypt-file": {
       "PACKAGE_NAME": "com.agency.jak.arta"
     },
@@ -17,6 +14,13 @@
       "PACKAGE_NAME": "com.agency.jak.arta"
     },
     "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "com.agency.jak.arta"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.agency.jak.arta"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
       "PACKAGE_NAME": "com.agency.jak.arta"
     }
   },

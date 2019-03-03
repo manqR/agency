@@ -18,6 +18,9 @@
     },
     "cordova-plugin-firebase": {
       "PACKAGE_NAME": "com.agency.jak.arta"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "com.agency.jak.arta"
     }
   },
   "dependent_plugins": {}
