@@ -9,6 +9,7 @@
 
 myApp.onPageInit('signup', function(page) {
 
+	
 	$('.page[data-page=signup] form[name=signup]').validate({
 		rules: {
 			username: {
@@ -40,21 +41,26 @@ myApp.onPageInit('signup', function(page) {
 		submitHandler: function(form) {
 
 			var username = $("input[name=username]").val();
-			var email = $("input[name=email]").val();
-			var password = $("input[name=password]").val();
+			var emails = $("input[name=emails]").val();
+			var passwords = $("input[name=passwords]").val();
+			myApp.showIndicator();
 
+			// console.log(passwords);
 			$.post(`${URL}?r=signup/create`,{
 				username: username,			
-				email: email,			
+				email: emails,			
 				dvid: device.uuid,
-				password: SHA1(password,KEY),			
+				password: SHA1(passwords,KEY),			
 			},
 			function(data, status){	
 				if(data.msg == 'success'){
+					// console.log(password);
+					myApp.hideIndicator();
 					// console.log('data ', data.data)
-					localStorage.setItem("loginData", data);
+					// localStorage.setItem("loginData", data);
+
 					mainView.router.load({
-						url: 'home.html'
+						url: 'login.html'
 					});
 				}
 			});
@@ -72,6 +78,7 @@ myApp.onPageInit('signup', function(page) {
 
 myApp.onPageInit('login', function(page) {
 
+	localStorage.removeItem("loginData");
 	$('.page[data-page=login] form[name=login]').validate({
 		rules: {		
 			email: {
@@ -96,40 +103,35 @@ myApp.onPageInit('login', function(page) {
 		},
 		submitHandler: function(form) {
 
-			var email = $("input[name=email]").val();
-			var password = $("input[name=password]").val();
-
-			// $.post(`${URL}?r=login/post`,{						
-			// 	email: email,			
-			// 	password: SHA1(password,KEY),			
-			// },
-			// function(data, status){	
-			// 	if(data){
-			// 		localStorage.setItem("loginData", data);
-			// 		mainView.router.load({
-			// 			url: 'home.html'
-			// 		});
-			// 	}
-			// });
-
-
-			$.ajax({
-					url: `${URL}?r=login/post`,
-					type: 'post',
-					data: {
-							email: email,			
-							password: SHA1(password,KEY),			
-					},
-					headers: {
-						'Content-Type': 'application/json',
-						'Accept': 'application/json'
-					},
-					dataType: 'json',
-					success: function (data) {
-							console.info(data);
-					}
+			var emaill = $("input[name=emaill]").val();
+			var passwordl = $("input[name=passwordl]").val();
+			// console.log(passwordl)
+			myApp.showIndicator();
+			$.post(`${URL}?r=api/login`,{						
+				email: emaill,			
+				password: SHA1(passwordl,KEY),			
+			},
+			function(data, status){	
+				// console.log(data)
+				// console.log('password ',password);
+				myApp.hideIndicator();
+				if(data.msg == 'success'){
+						localStorage.setItem("loginData", data.token);
+						mainView.router.load({
+							url: 'home.html'
+						});
+				}else{
+					alert('Incorect Password or Email');
+				}
+				// if(data){
+				// 	localStorage.setItem("loginData", data);
+				// 	mainView.router.load({
+				// 		url: 'home.html'
+				// 	});
+				// }
 			});
 		}
+			
 	});
 
 })

@@ -32,7 +32,7 @@ var app = {
             window.FirebasePlugin.getToken(function(token) {
                 // save this server-side and use it to push notifications to this device
                 if(token != ''){
-                    $.post(`${URL}/x-mob-fcm-js.php`,{
+                    $.post(`${URL}/?r=api/fcm-token`,{
                         Token: token,
                         DeviceId: device.uuid,				
                     })
