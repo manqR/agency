@@ -123,12 +123,6 @@ myApp.onPageInit('login', function(page) {
 				}else{
 					alert('Incorect Password or Email');
 				}
-				// if(data){
-				// 	localStorage.setItem("loginData", data);
-				// 	mainView.router.load({
-				// 		url: 'home.html'
-				// 	});
-				// }
 			});
 		}
 			
@@ -138,6 +132,57 @@ myApp.onPageInit('login', function(page) {
 
 
 
+
+
+/*
+|------------------------------------------------------------------------------
+| User Profile
+|------------------------------------------------------------------------------
+*/
+
+myApp.onPageInit('user-profile', function(page) {
+
+	/* Portfolio Images Browser */
+	$$('body').on('click', '.page[data-page=user-profile] #tab-portfolio .image-gallery .image-wrapper img', function() {
+		var photos = [];
+
+		$('.page[data-page=user-profile] #tab-portfolio .image-gallery .image-wrapper img').each(function() {
+			photos.push({
+				url: $(this).attr('src'),
+				caption: $(this).attr('alt')
+			});
+		});
+
+		var myPhotoBrowser = myApp.photoBrowser({
+    	photos: photos,
+			exposition: false,
+			lazyLoading: true,
+			lazyLoadingInPrevNext: true,
+			lazyLoadingOnTransitionStart: true,
+			loop: true
+		});
+		myPhotoBrowser.open();
+	});
+
+	var loginData = localStorage.getItem('loginData');
+	console.log(loginData);
+	$.post(`${URL}?r=api/profile`,{						
+		token: loginData,				
+	},
+	function(data, status){	
+			console.log(data)
+			if(data.msg == 'success'){
+					// document.getElementById("username").innerHTML = data.username;
+					document.getElementById("about").innerHTML = data.description;						
+					document.getElementById("name").innerHTML = data.first_name;
+					document.getElementById("birthday").innerHTML = data.bod;
+					document.getElementById("location").innerHTML = data.address;
+					document.getElementById("phone").innerHTML = data.phone; 
+					document.getElementById("email").innerHTML = data.email; 
+			}
+	})
+
+});
 
 /*
 |------------------------------------------------------------------------------

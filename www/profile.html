@@ -17,9 +17,10 @@
 
 		<div class="profile-header">
 			<img class="user-avatar img-circle" src="assets/custom/img/icons/black/user.png" alt="Avatar" />
-			<div class="user-name">Praveen Mujawdiya</div>
+			<i class="material-icons" style="margin-left: 80px;">add_circle</i>
+			<!-- <div class="user-name" id="username"></div> -->
 			<div class="buttons-row user-actions">
-				<a href="edit-profile.html" class="button button-fill color-green"><i class="material-icons">edit</i>&nbsp; Edit </a>                
+				<a href="edit-profile.html" class="button button-fill color-green">Update </a>                
 				<a href="login.html" class="button button-fill color-red">Logout</a>
 			</div>
 		</div>
@@ -35,7 +36,7 @@
 			<div id="tab-overview" class="tab active">
 				<div class="card">
 					<div class="card-content">
-						<div class="card-content-inner">
+						<div class="card-content-inner" id="about">
 							<p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
 							<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
 						</div>
@@ -52,7 +53,7 @@
 												<div class="item-title">
 													<i class="material-icons">person_outline</i>
 												</div>
-												<div class="item-after">Praveen Mujawdiya</div>
+												<div class="item-after" id="name">Praveen Mujawdiya</div>
 											</div>
 										</div>
 									</li>
@@ -62,7 +63,7 @@
 												<div class="item-title">
 													<i class="material-icons">cake</i>
 												</div>
-												<div class="item-after">December 22, 1991</div>
+												<div class="item-after" id="birthday">December 22, 1991</div>
 											</div>
 										</div>
 									</li>
@@ -72,7 +73,7 @@
 												<div class="item-title">
 													<i class="material-icons">place</i>
 												</div>
-												<div class="item-after">Indore, India</div>
+												<div class="item-after" id="location">Indore, India</div>
 											</div>
 										</div>
 									</li>
@@ -82,7 +83,7 @@
 												<div class="item-title">
 													<i class="material-icons">call</i>
 												</div>
-												<div class="item-after">+91-9876543210</div>
+												<div class="item-after" id="phone">+91-9876543210</div>
 											</div>
 										</div>
 									</li>
@@ -92,7 +93,7 @@
 												<div class="item-title">
 													<i class="material-icons">mail_outline</i>
 												</div>
-												<div class="item-after">praveen.mujawdiya@gmail.com</div>
+												<div class="item-after" id="email">praveen.mujawdiya@gmail.com</div>
 											</div>
 										</div>
 									</li>
@@ -101,79 +102,11 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="card">
 					<div class="card-content">
-						<div class="card-content-inner">
-							<div class="list-block no-hairlines no-hairlines-between">
-								<ul>
-									<li>
-										<div class="item-content">
-											<div class="item-inner">
-												<div class="item-title">
-													<i class="fa fa-fw fa-lg fa-briefcase"></i>
-												</div>
-												<div class="item-after">Founder, The Code Brewery</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="item-content">
-											<div class="item-inner">
-												<div class="item-title">
-													<i class="fa fa-fw fa-lg fa-graduation-cap"></i>
-												</div>
-												<div class="item-after">Masters in Computer Science</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="item-content">
-											<div class="item-inner">
-												<div class="item-title">
-													<i class="material-icons">language</i>
-												</div>
-												<div class="item-after">English and Hindi</div>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-content">
-						<div class="card-content-inner text-center">
-							<a target="_blank" href="https://twitter.com/" class="external" title="Twitter">
-								<i class="fa-stack fa-lg">
-									<span class="fa fa-circle fa-stack-2x color-twitter"></span>
-									<span class="fa fa-twitter fa-stack-1x fa-inverse"></span>
-								</i>
-							</a>
-							<a target="_blank" href="https://linkedin.com/" class="external" title="LinkedIn">
-								<i class="fa-stack fa-lg">
-									<span class="fa fa-circle fa-stack-2x color-linkedin"></span>
-									<span class="fa fa-linkedin fa-stack-1x fa-inverse"></span>
-								</i>
-							</a>
-							<a target="_blank" href="https://pinterest.com/" class="external" title="Pinterest">
-								<i class="fa-stack fa-lg">
-									<span class="fa fa-circle fa-stack-2x color-pinterest"></span>
-									<span class="fa fa-pinterest fa-stack-1x fa-inverse"></span>
-								</i>
-							</a>
-							<a target="_blank" href="https://dribbble.com/" class="external" title="Dribbble">
-								<i class="fa-stack fa-lg">
-									<span class="fa fa-circle fa-stack-2x color-dribbble"></span>
-									<span class="fa fa-dribbble fa-stack-1x fa-inverse"></span>
-								</i>
-							</a>
-							<a target="_blank" href="https://behance.com/" class="external" title="Behance">
-								<i class="fa-stack fa-lg">
-									<span class="fa fa-circle fa-stack-2x color-behance"></span>
-									<span class="fa fa-behance fa-stack-1x fa-inverse"></span>
-								</i>
-							</a>
+						<div class="card-content-inner text-center" id="social">
+							
 						</div>
 					</div>
 				</div>

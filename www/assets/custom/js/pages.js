@@ -1,36 +1,5 @@
 'use strict';
 
-/*
-|------------------------------------------------------------------------------
-| User Profile
-|------------------------------------------------------------------------------
-*/
-
-myApp.onPageInit('user-profile', function(page) {
-
-	/* Portfolio Images Browser */
-	$$('body').on('click', '.page[data-page=user-profile] #tab-portfolio .image-gallery .image-wrapper img', function() {
-		var photos = [];
-
-		$('.page[data-page=user-profile] #tab-portfolio .image-gallery .image-wrapper img').each(function() {
-			photos.push({
-				url: $(this).attr('src'),
-				caption: $(this).attr('alt')
-			});
-		});
-
-		var myPhotoBrowser = myApp.photoBrowser({
-    	photos: photos,
-			exposition: false,
-			lazyLoading: true,
-			lazyLoadingInPrevNext: true,
-			lazyLoadingOnTransitionStart: true,
-			loop: true
-		});
-		myPhotoBrowser.open();
-	});
-
-});
 
 /*
 |------------------------------------------------------------------------------
