@@ -28,6 +28,14 @@
 	background-color:#2b9dad;
 
 }
+.page[data-page=edit-personal] .item-media{
+		margin-left: 20px;
+}
+.page[data-page=edit-personal] .btn-save{
+		border: 0;
+		background-color: white;
+}
+
 /*
 |------------------------------------------------------------------------------
 | Edit Social
@@ -39,6 +47,14 @@
 	background-color:#2b9dad;
 
 }
+
+.page[data-page=edit-social] .item-media{
+		margin-left: 20px;
+}
+.page[data-page=edit-social] .btn-save{
+		border: 0;
+		background-color: white;
+}
 /*
 |------------------------------------------------------------------------------
 | Edit Experience
@@ -49,6 +65,14 @@
 .page[data-page=edit-experience] .navbar, .toolbar, .subnavbar, .toolbar-inner {
 	background-color:#2b9dad;
 
+}
+
+.page[data-page=edit-experience] .item-media{
+	margin-left: 20px;
+}
+.page[data-page=edit-experience] .btn-save{
+	border: 0;
+	background-color: white;
 }
 
 /*

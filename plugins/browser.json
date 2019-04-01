@@ -21,6 +21,9 @@
     },
     "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "com.agency.jak.arta"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.agency.jak.arta"
     }
   },
   "dependent_plugins": {}

@@ -228,8 +228,13 @@ myApp.onPageInit('edit-social', function(page) {
 
 myApp.onPageInit('edit-personal', function(page) {
 
-		console.log('edit personal');
-		
+		/* Mobiscroll */
+		$("#birthday").mobiscroll({
+			preset: 'date',
+			theme: 'android-ics light',		
+			mode: 'scroller',
+		});
+	
 })
 
 
