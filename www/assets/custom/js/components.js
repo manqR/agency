@@ -193,6 +193,37 @@ myApp.onPageInit('user-profile', function(page) {
 myApp.onPageInit('edit-profile', function(page) {
 
 		console.log('edit profile');
+		myApp.showIndicator();
+		var loginData = localStorage.getItem('loginData');
+		console.log(loginData);
+		$.post(`${URL}?r=api/profile`,{						
+			token: loginData,				
+		},
+		function(data, status){	
+				console.log(data)
+				if(data.msg == 'success'){
+						myApp.hideIndicator();	
+						// document.getElementById("username").innerHTML = data.username;			
+
+						document.getElementById("namex").innerHTML = data.first_name;
+						document.getElementById("birthdayx").innerHTML = data.bod;
+						document.getElementById("locationx").innerHTML = data.address;
+						document.getElementById("phonex").innerHTML = data.phone; 
+						document.getElementById("emailx").innerHTML = data.email; 
+				}
+		})
+
+		$.post(`${URL}?r=api/social`,{						
+			token: loginData,				
+		},
+		function(data, status){	
+				data.map((soc) => {	
+						console.log('social ',soc.msg)
+						document.getElementById(soc.icons).innerHTML = soc.link;
+						myApp.hideIndicator();
+						
+				})	
+		})
 		
 })
 
@@ -217,8 +248,53 @@ myApp.onPageInit('edit-experience', function(page) {
 myApp.onPageInit('edit-social', function(page) {
 
 		console.log('edit social');
+		var loginData = localStorage.getItem('loginData');
+		$.post(`${URL}?r=api/social`,{						
+			token: loginData,				
+		},
+		function(data, status){	
+				data.map((soc) => {	
+						console.log('social ',soc.msg)
+						// document.getElementById(soc.icons).innerHTML = soc.link;
+						$('#'+soc.icons+'x').val(soc.link);
+						myApp.hideIndicator();
+						
+				})	
+		})
 		
 })
+
+
+function insertSocial(model, link){
+	$.post(`${URL}?r=api/update-social`,{						
+		token: loginData,				
+		model:model,
+		link:link
+	},
+	function(data, status){	
+		console.log('log ',data)
+	})
+}
+
+$('.page[data-page=edit-social] form[name=edit-social]').validate({	
+	
+		submitHandler: function(form) {
+
+				var facebook = $("input[name=facebookx]").val();
+				var instagram = $("input[name=instagramx]").val();
+				var twitter = $("input[name=twitterx]").val();
+				var linekdin = $("input[name=linekdinx]").val();
+				
+				insertSocial('facebook',facebook);
+				insertSocial('instagram',instagram);
+				insertSocial('twitter',twitter);
+				insertSocial('linekdin',linekdin);
+
+				myApp.showIndicator();
+		
+		}	
+});
+
 
 /*
 |------------------------------------------------------------------------------
@@ -228,11 +304,153 @@ myApp.onPageInit('edit-social', function(page) {
 
 myApp.onPageInit('edit-personal', function(page) {
 
+	
+		var loginData = localStorage.getItem('loginData');
+
 		/* Mobiscroll */
-		$("#birthday").mobiscroll({
+		$("#birthdayxx").mobiscroll({
 			preset: 'date',
 			theme: 'android-ics light',		
 			mode: 'scroller',
+		});
+
+		$(".changes").mobiscroll({
+			preset: 'select',
+			theme: 'android-ics light',		// Specify theme like: theme: 'ios' or omit setting to use default                    
+		});	
+	
+
+
+		// PROVINCE GET FUNCTION
+function GetProvince(token,loc){
+
+	console.log('location function ',loc);
+
+	if(loc === 'null' || loc === ''){
+			$("select#locationxx").append( $("<option>")
+					.val('')
+					.html('- Location -')
+			);
+	}else{
+		$("select#locationxx").append( $("<option>")
+					.val(loc)
+					.html(loc)
+			);
+	}
+
+
+	$.post(`${URL}?r=api/province`,{
+		token: token,		
+	},
+	function(data, status){				
+		
+		data.map((loc) => {	
+			myApp.hideIndicator();
+			$('.changes').css('display','block');	
+			$("select#locationxx").append( $("<option>")
+				.val(loc.location)
+				.html(loc.location)
+			);		
+		})	
+	})
+}
+
+
+
+myApp.showIndicator();
+$.post(`${URL}?r=api/profile`,{						
+	token: loginData,				
+},
+function(data, status){	
+		if(data.msg == 'success'){
+				myApp.hideIndicator();	
+				$('#usernamexx').val(data.username);
+				$('#namexx').val(data.first_name);
+				// console.log('xxxxx ',data.bod);
+				if(data.bod !== '' || data.bod !== null){
+						$('#birthdayxx').val(data.bod);
+				}			
+				$('#locationxx').val(data.address);
+				$('#phonexx').val(data.phone);
+				$('#emailxx').val(data.email);
+				$('#aboutxx').val(data.description)
+
+				GetProvince(loginData, data.address);
+		}
+})
+
+
+
+	// console.log('currentLoc 2',currentLoc);
+
+	
+
+
+
+	$('.page[data-page=edit-personal] form[name=edit-personal]').validate({
+			rules: {		
+				username: {
+					required: true
+					},			
+				email: {
+					required: true
+					},			
+				name: {
+					required: true
+					},			
+			},
+			messages: {		
+				email: {
+					required: 'Please fill email field ..'
+					},
+				username: {
+					required: 'Please fill username field ..'
+					},
+				name: {
+					required: 'Please fill Name field ..'
+					}
+			},
+			onkeyup: false,
+			errorElement : 'div',
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent().siblings('.input-error'));
+			},
+
+			submitHandler: function(form) {
+
+				var username = $("input[name=usernamexx]").val();
+				var name = $("input[name=namexx]").val();
+				var birthday = $("input[name=birthdayxx]").val();
+				var locations = $("#locationxx").val(); 
+
+				var phone = $("input[name=phonexx]").val();
+				var email = $("input[name=emailxx]").val();
+				var about = $("#aboutxx").val();
+				
+				console.log('submit', locations);
+				myApp.showIndicator();
+				$.post(`${URL}?r=api/update-profile`,{	
+					token: loginData,	
+					username: username,
+					name: name,
+					email: email,
+					birthday: birthday,
+					location: locations,
+					phone: phone,
+					about: about,
+				},function(data, status){	
+					if(data.msg == 'success'){
+							mainView.router.loadPage({
+								url:'home.html', 
+								ignoreCache:true, 
+								reload:true
+							})
+					}
+				
+				});
+			
+			}
+				
 		});
 	
 })
