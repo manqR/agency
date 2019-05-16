@@ -179,10 +179,12 @@ myApp.onPageInit('user-profile', function(page) {
 					document.getElementById("location").innerHTML = data.address;
 					document.getElementById("phone").innerHTML = data.phone; 
 					document.getElementById("email").innerHTML = data.email; 
+
 			}
 	})
 
 });
+
 
 /*
 |------------------------------------------------------------------------------
@@ -193,7 +195,26 @@ myApp.onPageInit('user-profile', function(page) {
 myApp.onPageInit('edit-profile', function(page) {
 
 		console.log('edit profile');
-		
+		var loginData = localStorage.getItem('loginData');
+	console.log(loginData);
+	$.post(`${URL}?r=api/profile`,{						
+		token: loginData,				
+	},
+	function(data, status){	
+			
+			if(data.msg == 'success'){
+					// document.getElementById("username").innerHTML = data.username;
+					document.getElementById("about").innerHTML = data.description;						
+					document.getElementById("name").innerHTML = data.first_name;
+					document.getElementById("birthday").innerHTML = data.bod;
+					document.getElementById("location").innerHTML = data.address;
+					document.getElementById("phone").innerHTML = data.phone; 
+					document.getElementById("email").innerHTML = data.email; 
+
+					let emai = $$("#email").val();
+			}
+	})
+	
 })
 
 /*
