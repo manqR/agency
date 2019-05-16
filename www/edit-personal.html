@@ -14,7 +14,8 @@
 
 	<!-- Begin: Page Content -->
   	<div class="page-content">
-		<form name="login" action="#" method="POST" enctype="multipart/form-data">
+		<div class="mobi"></div>
+		<form name="edit-personal" action="#" method="POST" enctype="multipart/form-data">
 			<div class="card">
 				<div class="card-header">
 					<span style="color:#757575"><b>Personal</b></span>					
@@ -26,56 +27,72 @@
 						<div class="list-block no-hairlines no-hairlines-between">
 							<ul>
 								<li class="item-content item-input">
-									<div class="item-media"><i class="material-icons">person_outline</i></div>
+									<div class="item-media"><i class="material-icons">info</i></div>
 									<div class="item-inner">									 
-									  <div class="item-input-wrap">
-										<input type="text" name="name">
-										<span class="input-clear-button"></span>
-									  </div>
+											<div class="item-input">
+													<input type="text" name="usernamexx" id="usernamexx" placeholder="Username">
+											</div>
+											<div class="item-text input-error"></div>
+									</div>
+								</li>
+
+								<li class="item-content item-input">
+									<div class="item-media"><i class="material-icons">person_outline</i></div>
+									<div class="item-inner">		
+											<div class="item-inner">
+													<div class="item-input">
+															<input type="text" name="namexx" id="namexx" placeholder="Name">
+													</div>
+													<div class="item-text input-error"></div>
+											</div>							 									 
 									</div>
 								</li>
 								
 								<li class="item-content item-input">
 									<div class="item-media"><i class="material-icons">cake</i></div>
 									<div class="item-inner">									 
-									  <div class="item-input-wrap">
-										<input type="text" id="birthday" name="birthday" placeholder="Birthday" readonly />
-										<span class="input-clear-button"></span>
-									  </div>
+									  <div class="item-input">
+											<input type="text" id="birthdayxx" name="birthdayxx" placeholder="Birthday" readonly />
+										</div>
 									</div>
 								</li>
 								<li class="item-content item-input">
 									<div class="item-media"><i class="material-icons">place</i></div>
 									<div class="item-inner">									 
-									  <div class="item-input-wrap">
-										<input type="text" name="place">
-										<span class="input-clear-button"></span>
-									  </div>
+											<div class="item-input-wrap">
+													<select name="locationxx" id="locationxx" class="changes" >
+													
+													</select>
+													<span class="input-clear-button"></span>
+											</div>
 									</div>
 								</li>
 								<li class="item-content item-input">
 									<div class="item-media"><i class="material-icons">call</i></div>
 									<div class="item-inner">									 
 									  <div class="item-input-wrap">
-										<input type="text" name="call">
+										<input type="text" name="phonexx" id="phonexx" placeholder="Phone Number">
 										<span class="input-clear-button"></span>
 									  </div>
 									</div>
 								</li>
 								<li class="item-content item-input">
 									<div class="item-media"><i class="material-icons">mail_outline</i></div>
-									<div class="item-inner">									 
-									  <div class="item-input-wrap">
-										<input type="email" name="email" placeholder="email">
-										<span class="input-clear-button"></span>
-									  </div>
-									</div>
+
+									<div class="item-inner">
+											<div class="item-input">
+													<input type="text" name="emailxx" id="emailxx" placeholder="Email">
+											</div>
+											<div class="item-text input-error"></div>
+									</div>				
+
+								
 								</li>
 								<li class="item-content item-input">
 									<div class="item-media"><i class="material-icons">description</i></div>
 									<div class="item-inner">									 
 									  <div class="item-input-wrap">
-										<textarea class="resizable"></textarea>
+										<textarea class="resizable" name="aboutxx" placeholder="Describe yourself here..." id="aboutxx"></textarea>
 										<span class="input-clear-button"></span>
 									  </div>
 									</div>
